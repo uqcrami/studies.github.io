@@ -4,18 +4,39 @@
     <title>Video Player</title>
     <style>
         #video-container {
-            width: 640px;
-            height: 360px;
+            width: 1280px;
+            height: 720px;
         }
     </style>
 </head>
 <body>
     <div id="video-container">
         <video id="my-video" controls>
-            <source src="resources/videos/scenes/scene_0.mp4" type="video/mp4">
+            <source src="Heider and Simmel oirginal.mp4" type="video/mp4">
         </video>
     </div>
 
+    <!-- <script>
+        function checkVideoSupport(videoType) {
+            var video = document.createElement('video');
+            var isSupported = video.canPlayType(videoType);
+
+            if (isSupported == "") {
+                console.log("No support for " + videoType);
+            } else {
+                console.log("Supports " + videoType);
+            }
+        }
+        
+        // Check support for MP4
+        checkVideoSupport('video/mp4');
+
+        // Check support for WebM
+        checkVideoSupport('video/webm');
+
+        // Check support for Ogg
+        checkVideoSupport('video/ogg');
+    </script> -->
     <script>
         var video = document.getElementById("my-video");
 
