@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <style>
+        #video-container {
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video id="my-video" controls>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        var video = document.getElementById("my-video");
+
+        video.addEventListener("ended", function() {
+            // Prompt 5 questions here
+            var question1 = prompt("Question 1");
+            var question2 = prompt("Question 2");
+            var question3 = prompt("Question 3");
+            var question4 = prompt("Question 4");
+            var question5 = prompt("Question 5");
+
+            // Save responses to CSV file
+            var csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Question,Answer\n";
+            csvContent += "Question 1," + question1 + "\n";
+            csvContent += "Question 2," + question2 + "\n";
+            csvContent += "Question 3," + question3 + "\n";
+            csvContent += "Question 4," + question4 + "\n";
+            csvContent += "Question 5," + question5 + "\n";
+
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "responses.csv");
+            document.body.appendChild(link);
+            link.click();
+        });
+    </script>
+</body>
+</html>
