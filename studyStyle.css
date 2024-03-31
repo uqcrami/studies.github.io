@@ -1,0 +1,64 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#vid_QT {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#vid_QT label {
+  font-weight: bold;
+}
+
+#vid_QT input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+#vid_QT input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.button {
+    /* Common styles for both buttons */
+    padding: 14px 20px;
+    margin: 8px 0;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button.continue {
+    /* Specific styles for the continue button */
+    background-color: green;
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+}
+
+.button.end {
+    /* Specific styles for the end study button */
+    background-color: red;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+}

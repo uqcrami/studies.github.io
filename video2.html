@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+</head>
+<title>Video 2</title>
+<body>
+    <div class="center">    
+    <video id="playedvideo" width="640" height="480" controls>
+        <source src="resources/videos/scenes/processed_scene_2.mp4" type="video/mp4">
+    </video>
+    </div>
+    <script>
+        document.getElementById('playedvideo').addEventListener('ended', function() {
+        document.getElementById('questionnaire').style.display = 'block';
+        });
+      </script>
+      
+      <div id="questionnaire" style="display: none;">
+        <form id="vid_QT">
+          <label for="vid2_q1">Question 1:</label><br>
+          <input type="text" id="vid2_q1" name="vid2_q1" required><br>
+          <label for="vid2_q2">Question 2:</label><br>
+          <input type="text" id="vid2_q2" name="vid2_q2" required><br>
+          <label for="vid2_q3">Question 3:</label><br>
+          <input type="text" id="vid2_q3" name="vid2_q3" required><br>
+          <label for="vid2_q4">Question 4:</label><br>
+          <input type="text" id="vid2_q4" name="vid2_q4" required><br>
+          <label for="vid2_q5">Question 5:</label><br>
+          <input type="text" id="vid2_q5" name="vid2_q5" required><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      
+      <button id="Continue" class="button continue" style="display: none;">Continue</button>
+      <button id="end" class="button end" style="display: none;">End Study</button>
+    
+      <script>
+      document.getElementById('vid_QT').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        let questions = ['vid2_q1', 'vid2_q2', 'vid2_q3', 'vid2_q4', 'vid2_q5'];
+        let isValid = true;
+      
+        for (let i = 0; i < questions.length; i++) {
+          let question = document.getElementById(questions[i]);
+          if (question.value.trim() === '') {
+            isValid = false;
+            alert('Please answer all questions.');
+            break;
+          }
+          // Save the answer to localStorage
+          localStorage.setItem(questions[i], question.value);
+        }
+      
+        if (isValid) {
+          // Display the buttons
+          document.getElementById('Continue').style.display = 'block';
+          document.getElementById('end').style.display = 'block';
+        }
+      });
+      
+      document.getElementById('Continue').addEventListener('click', function() {
+        window.location.href = 'video3.html';
+      });
+      
+      document.getElementById('end').addEventListener('click', function() {
+        window.location.href = 'end.html';
+      });
+      </script>
+      
+    </body>
+</html>
+
+
+
+
+
+
+
