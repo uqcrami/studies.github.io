@@ -6,36 +6,36 @@
 <title>Video 1</title>
 <body>
     <div class="center">    
-    <video id="playedvideo" width="640" height="480" controls>
-        <source src="resources/videos/scenes/processed_scene_1.mp4" type="video/mp4">
-    </video>
+        <video id="playedvideo" width="640" height="480" controls>
+            <source src="resources/videos/scenes/processed_scene_1.mp4" type="video/mp4">
+        </video>
     </div>
     <script>
         document.getElementById('playedvideo').addEventListener('ended', function() {
         document.getElementById('questionnaire').style.display = 'block';
         });
-      </script>
+    </script>
       
-      <div id="questionnaire" style="display: none;">
-        <form id="vid_QT">
-          <label for="vid1_q1">Question 1:</label><br>
-          <input type="text" id="vid1_q1" name="vid1_q1" required><br>
-          <label for="vid1_q2">Question 2:</label><br>
-          <input type="text" id="vid1_q2" name="vid1_q2" required><br>
-          <label for="vid1_q3">Question 3:</label><br>
-          <input type="text" id="vid1_q3" name="vid1_q3" required><br>
-          <label for="vid1_q4">Question 4:</label><br>
-          <input type="text" id="vid1_q4" name="vid1_q4" required><br>
-          <label for="vid1_q5">Question 5:</label><br>
-          <input type="text" id="vid1_q5" name="vid1_q5" required><br>
-          <input type="submit" value="Submit">
-        </form>
-      </div>
+    <div id="questionnaire" style="display: none;">
+    <form id="vid_QT">
+        <label for="vid1_q1">Question 1:</label><br>
+        <input type="text" id="vid1_q1" name="vid1_q1" required><br>
+        <label for="vid1_q2">Question 2:</label><br>
+        <input type="text" id="vid1_q2" name="vid1_q2" required><br>
+        <label for="vid1_q3">Question 3:</label><br>
+        <input type="text" id="vid1_q3" name="vid1_q3" required><br>
+        <label for="vid1_q4">Question 4:</label><br>
+        <input type="text" id="vid1_q4" name="vid1_q4" required><br>
+        <label for="vid1_q5">Question 5:</label><br>
+        <input type="text" id="vid1_q5" name="vid1_q5" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
       
-      <button id="Continue" class="button continue" style="display: none;">Continue</button>
-      <button id="end" class="button end" style="display: none;">End Study</button>
+    <button id="Continue" class="button continue" style="display: none;">Continue</button>
+    <button id="end" class="button end" style="display: none;">End Study</button>
     
-      <script>
+    <script>
       document.getElementById('vid_QT').addEventListener('submit', function(e) {
         e.preventDefault();
     
@@ -60,13 +60,10 @@
         }
       });
       
-      document.getElementById('Continue').addEventListener('click', function() {
-        window.location.href = 'video2.html';
-      });
+      document.getElementById('Continue').addEventListener('click', function() {window.location.href = 'video2.html';});
       
       document.getElementById('end').addEventListener('click', function() {
-        window.location.href = 'end.html';
-      });
+        window.location.href = 'end.html';});
       </script>
       
     </body>

@@ -9,6 +9,11 @@
   <script>
     document.getElementById('download').addEventListener('click', function() {
       let data = [];
+      data.push(['User ID', localStorage.getItem('User ID')])
+      data.push(['Gender', localStorage.getItem('Gender')])
+      data.push(['Age', localStorage.getItem('Age')])
+      data.push(['Language', localStorage.getItem('Language')])
+      data.push(['Ethnicity', localStorage.getItem('Ethnicity')])
       for (let i = 1; i <= 5; i++) {
         for (let j = 1; j <= 5; j++) {
           let key = 'vid' + i + '_q' + j;

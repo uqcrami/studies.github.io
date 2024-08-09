@@ -35,6 +35,35 @@
   cursor: pointer;
 }
 
+.form {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
+}
+.form.label {
+  font-weight: bold;
+}
+
+.form.input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.form.input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 .button {
     /* Common styles for both buttons */
@@ -52,7 +81,7 @@
     background-color: green;
     position: fixed;
     bottom: 20px;
-    left: 10px;
+    right: 10px;
 }
 
 .button.end {
@@ -60,5 +89,18 @@
     background-color: red;
     position: fixed;
     bottom: 20px;
-    right: 10px;
+    left: 10px;
+}
+
+.footer {
+  position: fixed;
+  left: 100;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  color: black;
+  padding: 10px 0;
 }
