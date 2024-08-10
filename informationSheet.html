@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+    <title>Study Information Sheet</title>
+</head>
+<body>
+    <h1>Welcome to our Expressivity Study</h1>
+    
+    <!-- Scrollable consent text -->
+    <div id="consentText">
+        <h2>Imformation Sheet</h2>
+        <h3>Research Title: Study of Expressivity in Simple Artificial Forms</h3>
+        <p class="researchers">Researchers: Carlos Ramirez, School of EECS UQ (c.ramirezbrinez@uq.net.au)<br>
+        Prof. Janet Wiles, School of EECS UQ (j.wiles@uq.edu.au)<br>
+        Dr Marie Boden, School of EECS UQ (marieb@eecs.uq.edu.au)</p>
+        
+        <p>Dear Participant,</p>
+        <p>Thank you for your interest in participating in this research project. Please read the following information about the project so that you can decide whether you would like to take part in this research. Please feel free to ask any questions you might have about our involvement in the project.</p>
+        <p>If you decide to participate in this research, please keep in mind that your participation is voluntary. If you do not wish to take part, you do not have to. If you decide to take part and later change your mind, you are free to stop at any time, and you would not need to give any explanation for your decision to stop participating. If you choose to stop participating, your data will not be used in the research.</p>
+        
+        <p>You will be given the Participant Information and Consent Form to sign, and you will be given a copy to keep. Your decision whether you take part, or not to take part, or to take part and then withdraw, will not affect your relationship with the University of Queensland.</p>
+
+        <h2>What is this research about?</h2>
+        <p>The objective of this study is to investigate how basic forms can evoke emotional responses from human observers. We aim to employ a novel analytical approach to examine the results, with the goal of identifying key expressive characteristics. This analysis will contribute to refining our understanding of expressivity in artificial agents. Additionally, we seek to determine how expressivity is manifested within the constraints of limited agent capabilities.</p>
+    
+        <h2>What will I need to do?</h2>
+        <p>If you agree to participate, we require from you the following:</p>
+        <ul>
+            <li><b>Be fluent in written English language.</b></li>
+            <li><b>Have access to a computer with Google Chrome</b></li>
+            <li><b>You will be asked to watch five videos, lasting no longer than 30 seconds each, then describe what you see, and respond to several questions.</b></li>
+        </ul>
+        <p>Your participation will be paid at a rate of <b>&pound;9 (GBP) per hour</b> and should not extend past <b>20 minutes.</b></p>
+        <p>Your participation in this study is <b>ENTIRELY VOLUNTARY.</b></p>
+        <p>You have the right to withdraw from the study at any time without providing any reason. Remuneration will be paid only for completed studies.</p>
+    
+        <h2>What are the possible benefits of taking part?</h2>
+        <p>Participants will be remunerated via Prolific at a rate of approximately 9 GBP per hour.</p>
+        <p>Additionally, their involvement will contribute to expanding our understanding of Human-Robot interactions, a field with considerable potential to enhance future care for aging populations and other societal benefits.</p>
+        <p>To create robots capable of functioning and communicating effectively across diverse cultural backgrounds worldwide, it is essential to comprehend how cultural differences impact the performance and communicative abilities of robotic agents.</p>
+    
+        <h2>What are the possible risks and disadvantages of taking part?</h2>
+        <p>While there are no risks to participating in this study, you will need to dedicate approximately 20 minutes to watching the videos and completing the surveys. However, you may withdraw at any time for any reason, which you do not need to disclose.</p>
+    
+        <h2>What will happen to the information about me?</h2>
+        <p>All information collected about you will remain confidential and will not contain any identifying personal data. You may withdraw from the study up until the point that you submit the final exit survey, at which point it will be impossible to identify or remove your data.</p>
+        <p>Your data will consist of your survey and questionnaire responses, and will be stored in digital format only, on the University of Queensland Research Data Manager (UQRDM). We will retain the data for at least five years.</p>
+        <p>Data may be used in future research that is an extension of or related to this project. In this case, researchers will need permission from Carlos Ramirez or Prof. Janet Wiles to access this data.</p>
+        <p>It is anticipated that the results of this research project will be published and/or presented in a variety of forms. In any publication and/or presentation, information will be provided in such a way that you cannot be identified, except with your expressed permission.</p>
+    
+        <h2>What will happen if I decide to withdraw?</h2>
+        <p>Your participation in this research is voluntary and you are free to withdraw from the research anytime without needing to provide any explanation, and you would not receive any penalty or bias as a result of your withdrawal. Should you decide to withdraw, all the information collected from/about you will be destroyed and will not be used in the research.</p>
+    
+        <h2>Can I hear about the results of this research?</h2>
+        <p>The results from this study will be used to produce a paper, which is intended to be published in a Human Robot Interaction (HRI) conference or journal. The exit survey will provide an option to be notified via email of the publication of results. If you select to be notified, your email address will not be stored with your data and will not be included in the UQRDM database, to ensure you are not identifiable as a participant in the study.</p>
+    
+        <h2>Who can I contact if I have any concerns about the project?</h2>
+        <p>This study adheres to the Guidelines of the ethical review process of The University of Queensland and the National Statement on Ethical Conduct in Human Research. Whilst you are free to discuss your participation in this study with the researcher contactable on <a href="mailto:c.ramirezbrinez@uq.net.au">c.ramirezbrinez@uq.net.au</a> if you would like to speak to an officer of the University not involved in the study, you may contact the Ethics Coordinator on +617 3365 3924 / +617 3443 1656 or email <a href="mailto:humanethics@research.uq.edu.au">humanethics@research.uq.edu.au</a></p>
+    
+        <p>This research Ethics ID number: [insert]</p>
+        
+        <h1><center>Thank you for considering participating in this study.</center></h1>
+    </div>
+    
+    <!-- Agreement checkbox (initially hidden) -->
+    <div id="agreement" style="display: none;">
+        <input type="checkbox" id="agreeCheckbox" name="agree">
+        <label for="agreeCheckbox">By ticking this box, I confirm that I have read and understood the information sheet and I confirm that I meet the stipulated requirements to complete the study.</label>
+    </div>
+    
+    <!-- Continue button (initially hidden) -->
+    <button id="continueBtn" style="display: none;">Continue to consent form</button>
+
+    <script>
+        const consentText = document.getElementById('consentText');
+        const agreement = document.getElementById('agreement');
+        const agreeCheckbox = document.getElementById('agreeCheckbox');
+        const continueBtn = document.getElementById('continueBtn');
+        let agreementTimestamp;
+
+        consentText.addEventListener('scroll', function() {
+            if (consentText.scrollHeight - consentText.scrollTop === consentText.clientHeight) {
+                agreement.style.display = 'block';
+            }
+        });
+
+        agreeCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                agreementTimestamp = new Date().toISOString();
+                savePDFAgreement();
+                continueBtn.style.display = 'block';
+            } else {
+                continueBtn.style.display = 'none';
+            }
+        });
+
+        continueBtn.addEventListener('click', function() {
+            window.location.href = 'consentForm.html';
+        });
+
+        function savePDFAgreement() {
+            // Simulate saving the agreement
+            console.log('Agreement saved at:', agreementTimestamp);
+            
+            // In a real scenario, you would send this data to your server
+            // For example:
+            // fetch('/save-agreement', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({ timestamp: agreementTimestamp }),
+            // })
+            // .then(response => response.json())
+            // .then(data => console.log('Agreement saved:', data))
+            // .catch((error) => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+ 

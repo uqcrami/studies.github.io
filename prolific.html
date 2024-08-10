@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expressivity Study Questionnaire</title>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+</head>
+<body>
+    <h1 class="center">Welcome to our expressivity study</h1>
+
+    <h3>Your Prolific ID</h3>
+    <p>Please enter your Prolific ID below.</p>
+
+
+    <div id="questionnaire">
+        <form id="participant_QT" class="form">
+            <label for="userid">Prolific ID:</label><br>
+            <input type="text" class="form input" id="userid" name="userid" required><br>
+            <label for="notRobot">1+1=</label><br>
+            <input type="number" class="form input" id="notRobot" name="notRobot" required><br>
+            <input type="submit" class="form input" value="Submit">
+        </form>
+    </div>
+
+    <button id="Continue" class="button continue" style="display: none;">Continue</button>
+    <button id="end" class="button end" style="display: none;">End Study</button>
+
+    <script>
+        document.getElementById('participant_QT').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let questions = ['userid', 'notRobot'];
+            let isValid = true;
+
+            for (let i = 0; i < questions.length; i++) {
+                let question = document.getElementById(questions[i]);
+                if (question.value.trim() === '') {
+                    isValid = false;
+                    alert('Please answer all questions.');
+                    break;
+                }
+                // Save the answer to localStorage
+                localStorage.setItem(questions[i], question.value);
+            }
+
+            if (isValid) {
+                // Display the buttons
+                document.getElementById('Continue').style.display = 'block';
+                document.getElementById('end').style.display = 'block';
+            }
+        });
+
+        document.getElementById('Continue').addEventListener('click', function() {
+            window.location.href = 'video1.html';
+        });
+
+        document.getElementById('end').addEventListener('click', function() {
+            window.location.href = 'end.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+    <title>Collect Answers</title>
+</head>
+<body>
+    <button id="Continue" class="button continue" style="display: none;">Continue</button>
+    <button id="end" class="button end" style="display: none;">End Study</button>
+    <button id="download">Download CSV</button>
+
+    <script>
+        document.getElementById('download').addEventListener('click', function() {
+        let data = [];
+        data.push(['User ID', localStorage.getItem('userid')])
+        data.push(['Gender', localStorage.getItem('Gender')])
+        data.push(['Age', localStorage.getItem('Age')])
+        data.push(['Language', localStorage.getItem('Language')])
+        data.push(['Ethnicity', localStorage.getItem('Ethnicity')])
+        for (let i = 1; i <= 5; i++) {
+            for (let j = 1; j <= 5; j++) {
+            let key = 'vid' + i + '_q' + j;
+            data.push([key, localStorage.getItem(key)]);
+            }
+        }
+
+        let csvContent = 'data:text/csv;charset=utf-8,'
+            + data.map(e => e.join(",")).join("\n");
+
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "my_data.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click(); // This will download the data file named "my_data.csv".
+        document.getElementById('Continue').style.display = 'block';
+        document.getElementById('end').style.display = 'block';
+        });
+
+        document.getElementById('Continue').addEventListener('click', function() {window.location.href = 'end.html';});
+        
+        document.getElementById('end').addEventListener('click', function() {
+        window.location.href = 'end.html';});
+
+    </script>
+
+
+</body>
+</html>

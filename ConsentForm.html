@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+    <title>Study Information Sheet</title>
+</head>
+<body>
+    <h1>Welcome to our Expressivity Study</h1>
+    
+    <!-- Scrollable consent text -->
+    <div id="consentText">
+        <h2>Consent Form</h2>
+        <h3>Research Title: Study of Expressivity in Simple Artificial Forms</h3>
+        <p class="researchers">Researchers: Carlos Ramirez, School of EECS UQ (c.ramirezbrinez@uq.net.au)<br>
+        Prof. Janet Wiles, School of EECS UQ (j.wiles@uq.edu.au)<br>
+        Dr Marie Boden, School of EECS UQ (marieb@eecs.uq.edu.au)</p>
+        
+        <p>Dear Participant,</p>
+        <p>You are invited to participate in a Study of Expressivity in Simple Artificial Forms, conducted by Carlos Ramirez, a postgraduate student from The University of Queensland. Before you decide to take part, it is important that you understand why the research is being done and what it will involve. Please take your time to read the following information carefully. Feel free to ask any questions if you need clarification.</p>
+        
+        <h2>Purpose of the Study</h2>
+        <p>The objective of this study is to investigate how basic agents can evoke emotional responses from human observers. We aim to employ a novel analytical approach to examine the results, with the goal of identifying key expressive characteristics. This analysis will contribute to refining our understanding of expressivity in artificial agents. Additionally, we seek to determine how expressivity is manifested within the constraints of limited agent capabilities.</p>
+        
+        <h2>Study Procedures</h2>
+        <p>If you agree to participate, you will be asked to watch five videos, lasting no longer than 30 seconds each, then describe what you see, and respond to a number of questions such as "What in the forms actions mostly resulted in your behaviour prediction?". Your participation will be paid at a rate of 9GBP and should not extend past 20 minutes.</p>
+        
+        <h2>Voluntary Participation</h2>
+        <p>Your participation in this study is ENTIRELY VOLUNTARY. You have the right to withdraw from the study at any time without providing any reason. Remuneration will be paid only for completed studies.</p>
+        
+        <h2>Confidentiality</h2>
+        <p>Any information collected during the study will be kept confidential and will only be accessible to the research team. Your responses will be anonymized, and no identifying information will be associated with your data.</p>
+        
+        <h2>Data Storage and Use</h2>
+        <p>The data collected during the study will be securely stored at The University of Queensland Research Data Management Centre, adhering to the highest standards of excellence in research data management as outlined by the University of Queensland's ethics on data. This data will be used solely for research purposes. Any findings from the study may be published in scientific journals or presented at conferences, while ensuring that your identity remains anonymous throughout the process.</p>
+        
+        <h2>Contact Information</h2>
+        <p>If you have any questions or concerns about the study, you can contact Carlos Ramirez at c.ramirezbrinez@uq.net.au.</p>
+        
+        <h2>Consent</h2>
+        <p>By proceeding with the study, you indicate that you have read and understood the information provided above and voluntarily agree to participate in the study.</p>
+        
+        <h1><center>Thank you for considering participating in this study.</center></h1>
+    </div>
+    
+    <!-- Agreement checkbox (initially hidden) -->
+    <div id="agreement" style="display: none;">
+        <input type="checkbox" id="agreeCheckbox" name="agree">
+        <label for="agreeCheckbox">I have read and understood the consent form and agree to participate in this study.</label>
+    </div>
+    
+    <!-- Continue button (initially hidden) -->
+    <button id="continueBtn" style="display: none;">Continue to Prolific ID</button>
+
+    <script>
+        const consentText = document.getElementById('consentText');
+        const agreement = document.getElementById('agreement');
+        const agreeCheckbox = document.getElementById('agreeCheckbox');
+        const continueBtn = document.getElementById('continueBtn');
+        let agreementTimestamp;
+
+        consentText.addEventListener('scroll', function() {
+            if (consentText.scrollHeight - consentText.scrollTop === consentText.clientHeight) {
+                agreement.style.display = 'block';
+            }
+        });
+
+        agreeCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                agreementTimestamp = new Date().toISOString();
+                savePDFAgreement();
+                continueBtn.style.display = 'block';
+            } else {
+                continueBtn.style.display = 'none';
+            }
+        });
+
+        continueBtn.addEventListener('click', function() {
+            window.location.href = 'prolific.html';
+        });
+
+        function savePDFAgreement() {
+            // Simulate saving the agreement
+            console.log('Agreement saved at:', agreementTimestamp);
+            
+            // In a real scenario, you would send this data to your server
+            // For example:
+            // fetch('/save-agreement', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({ timestamp: agreementTimestamp }),
+            // })
+            // .then(response => response.json())
+            // .then(data => console.log('Agreement saved:', data))
+            // .catch((error) => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
