@@ -1,106 +1,244 @@
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2ecc71;
+    --secondary-dark: #27ae60;
+    --background-color: #f5f7fa;
+    --text-color: #34495e;
+    --text-light: #7f8c8d;
+    --border-color: #bdc3c7;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-#vid_QT {
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-  width: 50%;
-  margin: 0 auto;
+#questionnaire {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-#vid_QT label {
-  font-weight: bold;
+.question {
+    margin-bottom: 20px;
 }
 
-#vid_QT input[type="text"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
-#vid_QT input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
 }
 
-.form {
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-  width: 50%;
-  margin: 0 auto;
-}
-.form.label {
-  font-weight: bold;
+input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-.form.input[type="text"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-.form.input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+button:hover {
+    background-color: #2980b9;
 }
 
 .button {
-    /* Common styles for both buttons */
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.continue {
+    background-color: #2ecc71;
+}
+
+.continue:hover {
+    background-color: #27ae60;
+}
+
+.end {
+    background-color: #e74c3c;
+}
+
+.end:hover {
+    background-color: #c0392b;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+h1 {
+    text-align: center;
+}
+
+#vid_QT, .form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#vid_QT label, .form label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#vid_QT input[type="text"], .form input[type="text"],
+#vid_QT input[type="number"], .form input[type="number"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+#vid_QT input[type="text"]:focus, .form input[type="text"]:focus,
+#vid_QT input[type="number"]:focus, .form input[type="number"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#vid_QT input[type="submit"], .form input[type="submit"],
+.button {
+    background-color: var(--primary-color);
+    color: white;
     padding: 14px 20px;
     margin: 8px 0;
-    color: white;
-    font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#vid_QT input[type="submit"]:hover, .form input[type="submit"]:hover,
+.button:hover {
+    background-color: var(--primary-dark);
 }
 
 .button.continue {
-    /* Specific styles for the continue button */
-    background-color: green;
+    background-color: var(--secondary-color);
     position: fixed;
     bottom: 20px;
     right: 10px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button.continue:hover {
+    background-color: var(--secondary-dark);
 }
 
 .button.end {
-    /* Specific styles for the end study button */
-    background-color: red;
+    background-color: var(--error-color);
     position: fixed;
     bottom: 20px;
     left: 10px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button.end:hover {
+    background-color: #c0392b;
 }
 
 .footer {
-  position: fixed;
-  left: 100;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f8f9fa;
-  color: black;
-  padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: var(--text-light);
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#consentText {
+    height: 600px;
+    overflow-y: scroll;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.researchers {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+#agreement {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#continueBtn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#continueBtn:hover {
+    background-color: var(--secondary-dark);
 }

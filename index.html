@@ -1,66 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <!-- TODO  : save the form below to localStorage -->
-<head>
-    <link rel="stylesheet" type="text/css" href="studyStyle.css">
-</head>
-<body>
-<h1 class="center">Welcome to our expressivity study</h1>
-<h3>Aim of the study.</h3>
-<p>the aim is to investigate expressivity in artificial agens, in particular we are insterested in analysing low complexity agents hoping to identify recurrent patterns in their preceived expressivity</p>
-<h3>What will you do?</h3>
-<p>You will be shown a series of videos of virtual agents performing a series of actions. After each video you will be asked to answer a number of questions about the video you just watched.</p>
-<h3>Some information about you first.</h3><p>To start, please provide your Prolific user ID, gender, age, ethinicity, first language, and education background. For gender and ehtnicity we do not need to be specific, an answer that reflects the way you identify as will suffice</p>
-<div id="questionnaire">
-    <form id="participant_QT" class="form">
-        <label for="userid">User ID:</label><br>
-        <input type="text" class ="form input" id="userid" name="userid" required><br>
-        <label for="Gender">Gender:</label><br>
-        <input type="text" class ="form input" id="Gender" name="Gender" required><br>
-        <label for="Age">Age:</label><br>
-        <input type="text" class ="form input" id="Age" name="Age" required><br>
-        <label for="Language">Language:</label><br>
-        <input type="text" class ="form input" id="Language" name="Language" required><br>
-        <label for="Ethnicity">Ethnicity:</label><br>
-        <input type="text" class ="form input" id="Ethnicity" name="Ethnicity" required><br>
-        <input type="submit" class ="form input" value="Submit">
-      </form>
-    </div>
-
-
-      
-<button id="Continue" class="button continue" style="display: none;">Continue</button>
-<button id="end" class="button end" style="display: none;">End Study</button>
-
-<script>
-    document.getElementById('participant_QT').addEventListener('submit', function(e) { e.preventDefault();
-
-    let questions = ['userid', 'Gender', 'Age', 'Language', 'Ethnicity'];
-    let isValid = true;
-
-    for (let i = 0; i < questions.length; i++) {
-        let question = document.getElementById(questions[i]);
-        if (question.value.trim() === '') {
-        isValid = false;
-        alert('Please answer all questions.');
-        break;
-        }
-        // Save the answer to localStorage
-        localStorage.setItem(questions[i], question.value);
-    }
-
-  if (isValid) {
-    // Display the buttons
-        document.getElementById('Continue').style.display = 'block';
-        document.getElementById('end').style.display = 'block';
-    }
-    });
-
-    document.getElementById('Continue').addEventListener('click', function() {window.location.href = 'video1.html';});
-
-    document.getElementById('end').addEventListener('click', function() {
-    window.location.href = 'end.html'; });
-</script>
-
-</body>
-</html>
+   <!DOCTYPE html>
+   <html>
+   <head>
+     <meta http-equiv="refresh" content="0; url=informationSheet.html">
+   </head>
+   <body>
+     <p>Please wait while you're redirected to the <a href="informationSheet.html">information sheet</a>.</p>
+   </body>
+   </html>

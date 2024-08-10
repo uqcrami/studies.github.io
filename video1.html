@@ -1,70 +1,106 @@
 <!DOCTYPE html>
 <html>
- <head>
+<head>
     <link rel="stylesheet" type="text/css" href="studyStyle.css">
+    <title>Video 1</title>
 </head>
-<title>Video 1</title>
+
 <body>
-    <div class="center">    
+  <h1>Please watch the video and answer the following questions</h1>
+    <div class="center"> 
         <video id="playedvideo" width="640" height="480" controls>
             <source src="resources/videos/scenes/processed_scene_1.mp4" type="video/mp4">
         </video>
     </div>
-    <script>
-        document.getElementById('playedvideo').addEventListener('ended', function() {
-        document.getElementById('questionnaire').style.display = 'block';
-        });
-    </script>
-      
+
     <div id="questionnaire" style="display: none;">
-    <form id="vid_QT">
-        <label for="vid1_q1">Question 1:</label><br>
-        <input type="text" id="vid1_q1" name="vid1_q1" required><br>
-        <label for="vid1_q2">Question 2:</label><br>
-        <input type="text" id="vid1_q2" name="vid1_q2" required><br>
-        <label for="vid1_q3">Question 3:</label><br>
-        <input type="text" id="vid1_q3" name="vid1_q3" required><br>
-        <label for="vid1_q4">Question 4:</label><br>
-        <input type="text" id="vid1_q4" name="vid1_q4" required><br>
-        <label for="vid1_q5">Question 5:</label><br>
-        <input type="text" id="vid1_q5" name="vid1_q5" required><br>
-        <input type="submit" value="Submit">
-    </form>
+        <form id="vid_QT">
+            <div id="question1" class="question">
+                <label for="vid1_q1">Please provide in the form of a story a brief description of the events displayed in the video.</label><br>
+                <input type="text" id="vid1_q1" name="vid1_q1" required>
+                <button type="button" onclick="nextQuestion(1)">Next</button>
+            </div>
+            <div id="question2" class="question" style="display: none;">
+                <label for="vid1_q2">How many actors did you identify in the video?</label><br>
+                <input type="text" id="vid1_q2" name="vid1_q2" required>
+                <button type="button" onclick="nextQuestion(2)">Next</button>
+            </div>
+            <div id="question3" class="question" style="display: none;">
+                <label for="vid1_q3">In a few words, based on your answer in Q2, please describe the appearance of each actor.</label><br>
+                <input type="text" id="vid1_q3" name="vid1_q3" required>
+                <button type="button" onclick="nextQuestion(3)">Next</button>
+            </div>
+            <div id="question4" class="question" style="display: none;">
+                <label for="vid1_q4">In a few words, based on your answer in Q3, please describe the behaviours of each actor.</label><br>
+                <input type="text" id="vid1_q4" name="vid1_q4" required>
+                <button type="button" onclick="nextQuestion(4)">Next</button>
+            </div>
+            <div id="question5" class="question" style="display: none;">
+                <label for="vid1_q5">below are all your answers, are you ok to continue?</label><br>
+                <input type="text" id="vid1_q5" name="vid1_q5" required>
+                <button type="button" onclick="submitForm()">Submit</button>
+            </div>
+        </form>
     </div>
       
     <button id="Continue" class="button continue" style="display: none;">Continue</button>
     <button id="end" class="button end" style="display: none;">End Study</button>
     
     <script>
-      document.getElementById('vid_QT').addEventListener('submit', function(e) {
-        e.preventDefault();
-    
-        let questions = ['vid1_q1', 'vid1_q2', 'vid1_q3', 'vid1_q4', 'vid1_q5'];
-        let isValid = true;
-      
-        for (let i = 0; i < questions.length; i++) {
-          let question = document.getElementById(questions[i]);
-          if (question.value.trim() === '') {
-            isValid = false;
-            alert('Please answer all questions.');
-            break;
-          }
-          // Save the answer to localStorage
-          localStorage.setItem(questions[i], question.value);
+        document.getElementById('playedvideo').addEventListener('ended', function() {
+        document.getElementById('questionnaire').style.display = 'block';
+        });
+        
+        function nextQuestion(currentQuestion) {
+            let currentInput = document.getElementById(`vid1_q${currentQuestion}`);
+            if (currentInput.value.trim() === '') {
+                alert('Please answer the question before proceeding.');
+                return;
+            }
+            localStorage.setItem(`vid1_q${currentQuestion}`, currentInput.value);
+            document.getElementById(`question${currentQuestion}`).style.display = 'none';
+            document.getElementById(`question${currentQuestion + 1}`).style.display = 'block';
         }
-      
-        if (isValid) {
-          // Display the buttons
-          document.getElementById('Continue').style.display = 'block';
-          document.getElementById('end').style.display = 'block';
+
+        function submitForm() {
+            let lastInput = document.getElementById('vid1_q5');
+            if (lastInput.value.trim() === '') {
+                alert('Please answer the question before submitting.');
+                return;
+            }
+            localStorage.setItem('vid1_q5', lastInput.value);
+            document.getElementById('Continue').style.display = 'block';
+            document.getElementById('end').style.display = 'block';
         }
-      });
-      
-      document.getElementById('Continue').addEventListener('click', function() {window.location.href = 'video2.html';});
-      
-      document.getElementById('end').addEventListener('click', function() {
-        window.location.href = 'end.html';});
-      </script>
-      
-    </body>
-    </html>
+
+        document.getElementById('vid_QT').addEventListener('submit', function(e) {
+            e.preventDefault();
+        
+            let questions = ['vid1_q1', 'vid1_q2', 'vid1_q3', 'vid1_q4', 'vid1_q5'];
+            let isValid = true;
+          
+            for (let i = 0; i < questions.length; i++) {
+                let question = document.getElementById(questions[i]);
+                if (question.value.trim() === '') {
+                    isValid = false;
+                    alert('Please answer all questions.');
+                    break;
+                }
+                // Save the answer to localStorage
+                localStorage.setItem(questions[i], question.value);
+            }
+          
+            if (isValid) {
+                // Display the buttons
+                document.getElementById('Continue').style.display = 'block';
+                document.getElementById('end').style.display = 'block';
+            }
+        });
+        
+        document.getElementById('Continue').addEventListener('click', function() {window.location.href = 'video2.html';});
+        
+        document.getElementById('end').addEventListener('click', function() {
+            window.location.href = 'end.html';});
+    </script>
+</body>
+</html>
