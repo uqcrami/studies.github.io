@@ -7,42 +7,62 @@
 
 <body>
   <h1>Please watch the video and answer the following questions</h1>
-    <div class="center"> 
-        <video id="playedvideo" width="640" height="480" controls>
-            <source src="resources/videos/scenes/processed_scene_1.mp4" type="video/mp4">
-        </video>
+    <div class="container">
+        <div class="video-questionnaire">
+            <div class="center"> 
+                <video id="playedvideo" width="640" height="480" controls>
+                    <source src="resources/videos/scenes/processed_scene_1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="questionnaire" style="display: none;">
+                <form id="vid_QT">
+                    <div id="question1" class="question">
+                        <label for="vid1_q1">Please provide in the form of a story a brief description of the events displayed in the video.</label><br>
+                        <input type="text" id="vid1_q1" name="vid1_q1" required>
+                        <button type="button" onclick="nextQuestion(1)">Next</button>
+                    </div>
+                    <div id="question2" class="question" style="display: none;">
+                        <label for="vid1_q2">How many actors did you identify in the video?</label><br>
+                        <input type="text" id="vid1_q2" name="vid1_q2" required>
+                        <button type="button" onclick="nextQuestion(2)">Next</button>
+                    </div>
+                    <div id="question3" class="question" style="display: none;">
+                        <label for="vid1_q3">In a few words, based on your answer in Q2, please describe the appearance of each actor.</label><br>
+                        <input type="text" id="vid1_q3" name="vid1_q3" required>
+                        <button type="button" onclick="nextQuestion(3)">Next</button>
+                    </div>
+                    <div id="question4" class="question" style="display: none;">
+                        <label for="vid1_q4">In a few words, based on your answer in Q3, please describe the behaviours of each actor.</label><br>
+                        <input type="text" id="vid1_q4" name="vid1_q4" required>
+                        <button type="button" onclick="nextQuestion(4)">Next</button>
+                    </div>
+                    <div id="question5" class="question" style="display: none;">
+                        <label>Are you satisfied with all your answers?</label><br>
+                        <input type="radio" id="vid1_q5_yes" name="vid1_q5" value="yes" required>
+                        <label for="vid1_q5_yes">Yes</label>
+                        <input type="radio" id="vid1_q5_no" name="vid1_q5" value="no" required>
+                        <label for="vid1_q5_no">No</label>
+                        <div id="changeAnswers" style="display: none;">
+                            <p>Select the question you want to change:</p>
+                            <select id="questionToChange">
+                                <option value="1">Question 1</option>
+                                <option value="2">Question 2</option>
+                                <option value="3">Question 3</option>
+                                <option value="4">Question 4</option>
+                            </select>
+                            <button type="button" onclick="changeAnswer()">Change Answer</button>
+                        </div>
+                        <button type="button" onclick="submitForm()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="answerBox">
+            <h3>Your Answers:</h3>
+            <div id="answerContent"></div>
+        </div>
     </div>
 
-    <div id="questionnaire" style="display: none;">
-        <form id="vid_QT">
-            <div id="question1" class="question">
-                <label for="vid1_q1">Please provide in the form of a story a brief description of the events displayed in the video.</label><br>
-                <input type="text" id="vid1_q1" name="vid1_q1" required>
-                <button type="button" onclick="nextQuestion(1)">Next</button>
-            </div>
-            <div id="question2" class="question" style="display: none;">
-                <label for="vid1_q2">How many actors did you identify in the video?</label><br>
-                <input type="text" id="vid1_q2" name="vid1_q2" required>
-                <button type="button" onclick="nextQuestion(2)">Next</button>
-            </div>
-            <div id="question3" class="question" style="display: none;">
-                <label for="vid1_q3">In a few words, based on your answer in Q2, please describe the appearance of each actor.</label><br>
-                <input type="text" id="vid1_q3" name="vid1_q3" required>
-                <button type="button" onclick="nextQuestion(3)">Next</button>
-            </div>
-            <div id="question4" class="question" style="display: none;">
-                <label for="vid1_q4">In a few words, based on your answer in Q3, please describe the behaviours of each actor.</label><br>
-                <input type="text" id="vid1_q4" name="vid1_q4" required>
-                <button type="button" onclick="nextQuestion(4)">Next</button>
-            </div>
-            <div id="question5" class="question" style="display: none;">
-                <label for="vid1_q5">below are all your answers, are you ok to continue?</label><br>
-                <input type="text" id="vid1_q5" name="vid1_q5" required>
-                <button type="button" onclick="submitForm()">Submit</button>
-            </div>
-        </form>
-    </div>
-      
     <button id="Continue" class="button continue" style="display: none;">Continue</button>
     <button id="end" class="button end" style="display: none;">End Study</button>
     
@@ -60,17 +80,51 @@
             localStorage.setItem(`vid1_q${currentQuestion}`, currentInput.value);
             document.getElementById(`question${currentQuestion}`).style.display = 'none';
             document.getElementById(`question${currentQuestion + 1}`).style.display = 'block';
+            updateAnswerBox();
         }
 
         function submitForm() {
-            let lastInput = document.getElementById('vid1_q5');
-            if (lastInput.value.trim() === '') {
-                alert('Please answer the question before submitting.');
+            let satisfiedYes = document.getElementById('vid1_q5_yes');
+            let satisfiedNo = document.getElementById('vid1_q5_no');
+            
+            if (!satisfiedYes.checked && !satisfiedNo.checked) {
+                alert('Please select whether you are satisfied with your answers.');
                 return;
             }
-            localStorage.setItem('vid1_q5', lastInput.value);
-            document.getElementById('Continue').style.display = 'block';
-            document.getElementById('end').style.display = 'block';
+            
+            if (satisfiedYes.checked) {
+                localStorage.setItem('vid1_q5', 'Yes');
+                document.getElementById('Continue').style.display = 'block';
+                document.getElementById('end').style.display = 'block';
+                updateAnswerBox();
+            } else {
+                document.getElementById('changeAnswers').style.display = 'block';
+            }
+        }
+
+        function changeAnswer() {
+            let questionNumber = document.getElementById('questionToChange').value;
+            document.getElementById('question5').style.display = 'none';
+            document.getElementById(`question${questionNumber}`).style.display = 'block';
+        }
+
+        document.getElementById('vid1_q5_yes').addEventListener('change', function() {
+            document.getElementById('changeAnswers').style.display = 'none';
+        });
+
+        document.getElementById('vid1_q5_no').addEventListener('change', function() {
+            document.getElementById('changeAnswers').style.display = 'block';
+        });
+
+        function updateAnswerBox() {
+            let answerContent = document.getElementById('answerContent');
+            answerContent.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                let answer = localStorage.getItem(`vid1_q${i}`);
+                if (answer) {
+                    answerContent.innerHTML += `<p><strong>Q${i}:</strong> ${answer}</p>`;
+                }
+            }
         }
 
         document.getElementById('vid_QT').addEventListener('submit', function(e) {
@@ -97,10 +151,24 @@
             }
         });
         
-        document.getElementById('Continue').addEventListener('click', function() {window.location.href = 'video2.html';});
+        document.getElementById('Continue').addEventListener('click', function() {
+            saveAnswersToCSV('video1');
+            window.location.href = 'video2.html';
+        });
         
         document.getElementById('end').addEventListener('click', function() {
-            window.location.href = 'end.html';});
+            saveAnswersToCSV('video1');
+            window.location.href = 'end.html';
+        });
+
+        function saveAnswersToCSV(videoName) {
+            let csvContent = "Question,Answer\n";
+            for (let i = 1; i <= 5; i++) {
+                let answer = localStorage.getItem(`${videoName}_q${i}`);
+                csvContent += `"Q${i}","${answer}"\n`;
+            }
+            localStorage.setItem(`${videoName}_csv`, csvContent);
+        }
     </script>
 </body>
 </html>
