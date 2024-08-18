@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="studyStyle.css">
-    <title>Video 2</title>
+  <link rel="stylesheet" type="text/css" href="studyStyle.css">
+  <script>
+    const videoNumber = 2; // Change this for each video page
+  </script>
+  <script src="config_backup_20240816.js"></script>
+  <title></title>
 </head>
 <body>
-    <h1>Please watch the video and answer the following questions</h1>
+  <h1>This text should not appear, is just a placeholder for the title</h1>
     <div class="container">
         <div class="video-questionnaire">
             <div class="center">    
-                <video id="playedvideo" width="640" height="480" controls>
+                <video id="vid2" width="640" height="480" controls>
                     <source src="resources/videos/scenes/processed_scene_2.mp4" type="video/mp4">
                 </video>
             </div>
@@ -20,38 +24,38 @@
                         <label for="vid2_q1">Please provide in the form of a story a brief description of the events displayed in the video.
                         </label><br>
                         <input type="text" id="vid2_q1" name="vid2_q1" required><br>
-                        <button type="button" onclick="nextQuestion(1)">Next</button>
+                        <button type="button" onclick="nextQuestion(1,videoNumber)">Next</button>
                     </div>
                     
                     <div id="question2" class="question" style="display: none;">
                         <label for="vid2_q2">Please describe the role of the actors in the video.</label><br>
                         <input type="text" id="vid2_q2" name="vid2_q2" required><br>
-                        <button type="button" onclick="nextQuestion(2)">Next</button>
+                        <button type="button" onclick="nextQuestion(2,videoNumber)">Next</button>
                     </div>
                     
                     <div id="question3" class="question" style="display: none;">
                         <label for="vid2_q3">From Q2, Which specific expressions or actions had the greatest influence on your response?</label><br>
                         <input type="text" id="vid2_q3" name="vid2_q3" required><br>
-                        <button type="button" onclick="nextQuestion(3)">Next</button>
+                        <button type="button" onclick="nextQuestion(3,videoNumber)">Next</button>
                     </div>
                     
                     <div id="question4" class="question" style="display: none;">
                         <label>If you were to recreate the scene, what would be the key elements to alter or retain in order to elicit responses from other participants similar to the ones you provided for Q1?
                         </label><br>
-                        <input type="radio" id="vid2_q4_op1" name="vid2_q4" value="op1" required>
+                        <input type="checkbox" id="vid2_q4_op1" name="vid2_q4" value="op1" required>
                         <label for="vid2_q4_op1">Velocity of movements</label><br>
-                        <input type="radio" id="vid2_q4_op2" name="vid2_q4" value="op2">
+                        <input type="checkbox" id="vid2_q4_op2" name="vid2_q4" value="op2">
                         <label for="vid2_q4_op2">Proximity between actors</label><br>
-                        <input type="radio" id="vid2_q4_op3" name="vid2_q4" value="op3">
+                        <input type="checkbox" id="vid2_q4_op3" name="vid2_q4" value="op3">
                         <label for="vid2_q4_op3">Actor’s colour</label><br>
-                        <input type="radio" id="vid2_q4_op4" name="vid2_q4" value="op4">
+                        <input type="checkbox" id="vid2_q4_op4" name="vid2_q4" value="op4">
                         <label for="vid2_q4_op4">Actor’s size</label><br>
-                        <input type="radio" id="vid2_q4_op5" name="vid2_q4" value="op5">
+                        <input type="checkbox" id="vid2_q4_op5" name="vid2_q4" value="op5">
                         <label for="vid2_q4_op5">Actor’s shape</label><br>
-                        <input type="radio" id="vid2_q4_other" name="vid2_q4" value="other">
+                        <input type="checkbox" id="vid2_q4_other" name="vid2_q4" value="other">
                         <label for="vid2_q4_other">Add other element not listed</label><br>
                         <input type="text" id="vid2_q4_other_text" style="display: none;" placeholder="Please specify">
-                        <button type="button" onclick="nextQuestion(4)">Next</button>
+                        <button type="button" onclick="nextQuestion(4,videoNumber)">Next</button>
                     </div>
                     
                     <div id="question5" class="question" style="display: none;">
@@ -68,9 +72,9 @@
                                 <option value="3">Question 3</option>
                                 <option value="4">Question 4</option>
                             </select>
-                            <button type="button" onclick="changeAnswer()">Change Answer</button>
+                            <button type="button" onclick="changeAnswer(videoNumber)">Change Answer</button>
                         </div>
-                        <button type="button" onclick="submitForm()">Submit</button>
+                        <button type="button" onclick="submitForm(videoNumber)">Submit</button>
                     </div>
                 </form>
             </div>
@@ -85,119 +89,11 @@
     <button id="end" class="button end" style="display: none;">End Study</button>
     
     <script>
-        document.getElementById('playedvideo').addEventListener('ended', function() {
-            document.getElementById('questionnaire').style.display = 'block';
+        document.addEventListener('DOMContentLoaded', function() {
+          setPageTitle(videoNumber);
+          setupEventListeners(videoNumber);
+          updateAnswerBox(videoNumber);
         });
-        
-        function nextQuestion(currentQuestion) {
-            let currentQuestionElement;
-            let answer;
-
-            if (currentQuestion === 4) {
-                let selectedOption = document.querySelector('input[name="vid2_q4"]:checked');
-                if (!selectedOption) {
-                    alert('Please select an option before proceeding.');
-                    return;
-                }
-                if (selectedOption.value === 'other') {
-                    currentQuestionElement = document.getElementById('vid2_q4_other_text');
-                    if (currentQuestionElement.value.trim() === '') {
-                        alert('Please specify your answer for the "Other" option.');
-                        return;
-                    }
-                    answer = `Other: ${currentQuestionElement.value}`;
-                } else {
-                    answer = selectedOption.value;
-                }
-            } else {
-                currentQuestionElement = document.getElementById(`vid2_q${currentQuestion}`);
-                if (currentQuestionElement.value.trim() === '') {
-                    alert('Please answer the question before proceeding.');
-                    return;
-                }
-                answer = currentQuestionElement.value;
-            }
-
-            localStorage.setItem(`vid2_q${currentQuestion}`, answer);
-            document.getElementById(`question${currentQuestion}`).style.display = 'none';
-            document.getElementById(`question${currentQuestion + 1}`).style.display = 'block';
-            updateAnswerBox();
-        }
-        
-        function updateAnswerBox() {
-            let answerContent = document.getElementById('answerContent');
-            answerContent.innerHTML = '';
-            for (let i = 1; i <= 5; i++) {
-                let answer = localStorage.getItem(`vid2_q${i}`);
-                if (answer) {
-                    answerContent.innerHTML += `<p><strong>Q${i}:</strong> ${answer}</p>`;
-                }
-            }
-        }
-        
-        function submitForm() {
-            let satisfiedYes = document.getElementById('vid2_q5_yes');
-            let satisfiedNo = document.getElementById('vid2_q5_no');
-            
-            if (!satisfiedYes.checked && !satisfiedNo.checked) {
-                alert('Please select whether you are satisfied with your answers.');
-                return;
-            }
-            
-            if (satisfiedYes.checked) {
-                localStorage.setItem('vid2_q5', 'Yes');
-                document.getElementById('Continue').style.display = 'block';
-                document.getElementById('end').style.display = 'block';
-                updateAnswerBox();
-            } else {
-                document.getElementById('changeAnswers').style.display = 'block';
-            }
-        }
-        
-        function changeAnswer() {
-            let questionNumber = document.getElementById('questionToChange').value;
-            document.getElementById('question5').style.display = 'none';
-            document.getElementById(`question${questionNumber}`).style.display = 'block';
-        }
-        
-        document.getElementById('vid2_q5_yes').addEventListener('change', function() {
-            document.getElementById('changeAnswers').style.display = 'none';
-        });
-        
-        document.getElementById('vid2_q5_no').addEventListener('change', function() {
-            document.getElementById('changeAnswers').style.display = 'block';
-        });
-        
-        document.getElementById('vid2_q4_other').addEventListener('change', function() {
-            document.getElementById('vid2_q4_other_text').style.display = this.checked ? 'block' : 'none';
-        });
-        
-        document.querySelectorAll('input[name="vid2_q4"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.id !== 'vid2_q4_other') {
-                    document.getElementById('vid2_q4_other_text').style.display = 'none';
-                }
-            });
-        });
-        
-        document.getElementById('Continue').addEventListener('click', function() {
-            saveAnswersToCSV('video2');
-            window.location.href = 'video3.html';
-        });
-        
-        document.getElementById('end').addEventListener('click', function() {
-            saveAnswersToCSV('video2');
-            window.location.href = 'end.html';
-        });
-        
-        function saveAnswersToCSV(videoName) {
-            let csvContent = "Question,Answer\n";
-            for (let i = 1; i <= 5; i++) {
-                let answer = localStorage.getItem(`${videoName}_q${i}`);
-                csvContent += `"Q${i}","${answer}"\n`;
-            }
-            localStorage.setItem(`${videoName}_csv`, csvContent);
-        }
     </script>
 </body>
 </html>

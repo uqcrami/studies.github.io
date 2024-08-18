@@ -2,11 +2,11 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="studyStyle.css">
-    <title>Video 1</title>
+    <script src="config.js"></script>
+    <title></title>
 </head>
-
 <body>
-  <h1>Please watch the video and answer the following questions</h1>
+    <h1>This text should not appear, is just a placeholder for the title</h1>
     <div class="container">
         <div class="video-questionnaire">
             <div class="center"> 
@@ -169,6 +169,15 @@
             }
             localStorage.setItem(`${videoName}_csv`, csvContent);
         }
+
+      // Set the page title
+      document.title = studyConfig.title;
+      
+      // Set the h1 title if it exists
+      const titleElement = document.querySelector('h1');
+      if (titleElement) {
+          titleElement.textContent = studyConfig.title;
+      }
     </script>
 </body>
 </html>

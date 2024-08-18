@@ -2,72 +2,105 @@
 <html>
  <head>
     <link rel="stylesheet" type="text/css" href="studyStyle.css">
-</head>
-<title>Video 4</title>
-<body>
-    <div class="center">    
-    <video id="playedvideo" width="640" height="480" controls>
-      <source src="resources/videos/scenes/processed_scene_4.mp4" type="video/mp4">
-    </video>
-    </div>
     <script>
-        document.getElementById('playedvideo').addEventListener('ended', function() {
-        document.getElementById('questionnaire').style.display = 'block';
-        });
-      </script>
-      
-      <div id="questionnaire" style="display: none;">
-        <form id="vid_QT">
-          <label for="vid4_q1">Question 1:</label><br>
-          <input type="text" id="vid4_q1" name="vid4_q1" required><br>
-          <label for="vid4_q2">Question 2:</label><br>
-          <input type="text" id="vid4_q2" name="vid4_q2" required><br>
-          <label for="vid4_q3">Question 3:</label><br>
-          <input type="text" id="vid4_q3" name="vid4_q3" required><br>
-          <label for="vid4_q4">Question 4:</label><br>
-          <input type="text" id="vid4_q4" name="vid4_q4" required><br>
-          <label for="vid4_q5">Question 5:</label><br>
-          <input type="text" id="vid4_q5" name="vid4_q5" required><br>
-          <input type="submit" value="Submit">
-        </form>
-      </div>
-      
-      <button id="Continue" class="button continue" style="display: none;">Continue</button>
-      <button id="end" class="button end" style="display: none;">End Study</button>
+        const videoNumber = 4; // Changed to 4 for video4.html
+    </script>
+    <script src="config.js"></script>
+    <title></title>
+</head>
+<body>
+    <h1>This text should not appear, is just a placeholder for the title</h1>
+    <div class="container">
+        <div class="video-questionnaire">
+            <div class="center">    
+                <video id="vid4" width="640" height="480" controls>
+                    <source src="resources/videos/scenes/processed_scene_4.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div id="questionnaire" style="display: none;">
+                <form id="vid_QT">
+                    <div id="question1" class="question">
+                        <label for="vid4_q1">Please provide in the form of a story a brief description of the events displayed in the video.</label><br>
+                        <input type="text" id="vid4_q1" name="vid4_q1" required><br>
+                        <button type="button" onclick="nextQuestion(1, videoNumber)">Next</button>
+                    </div>
+                    
+                    <div id="question2" class="question" style="display: none;">
+                        <label for="vid4_q2">Please describe the role of the actors in the video.</label><br>
+                        <input type="text" id="vid4_q2" name="vid4_q2" required><br>
+                        <button type="button" onclick="nextQuestion(2, videoNumber)">Next</button>
+                    </div>
+                    
+                    <div id="question3" class="question" style="display: none;">
+                        <label for="vid4_q3">From Q2, Which specific expressions or actions had the greatest influence on your response?</label><br>
+                        <input type="text" id="vid4_q3" name="vid4_q3" required><br>
+                        <button type="button" onclick="nextQuestion(3, videoNumber)">Next</button>
+                    </div>
+                    
+                    <div id="question4" class="question" style="display: none;">
+                        <label>If you were to recreate the scene, what would be the key elements to alter or retain in order to elicit responses from other participants similar to the ones you provided for Q1?
+                        </label><br>
+                        <input type="checkbox" id="vid4_q4_op1" name="vid4_q4" value="op1">
+                        <label for="vid4_q4_op1">Velocity of movements</label><br>
+                        <input type="checkbox" id="vid4_q4_op2" name="vid4_q4" value="op2">
+                        <label for="vid4_q4_op2">Proximity between actors</label><br>
+                        <input type="checkbox" id="vid4_q4_op3" name="vid4_q4" value="op3">
+                        <label for="vid4_q4_op3">Actor's colour</label><br>
+                        <input type="checkbox" id="vid4_q4_op4" name="vid4_q4" value="op4">
+                        <label for="vid4_q4_op4">Actor's size</label><br>
+                        <input type="checkbox" id="vid4_q4_op5" name="vid4_q4" value="op5">
+                        <label for="vid4_q4_op5">Actor's shape</label><br>
+                        <input type="checkbox" id="vid4_q4_other" name="vid4_q4" value="other">
+                        <label for="vid4_q4_other">Add other element not listed</label><br>
+                        <input type="text" id="vid4_q4_other_text" style="display: none;" placeholder="Please specify">
+                        <button type="button" onclick="nextQuestion(4, videoNumber)">Next</button>
+                    </div>
+                    
+                    <div id="question5" class="question" style="display: none;">
+                        <label for="vid4_q5">Are you satisfied with all your answers?</label><br>
+                        <input type="text" id="vid4_q5" name="vid4_q5" required><br>
+                        <label>Are you satisfied with all your answers?</label><br>
+                        <input type="radio" id="vid4_q5_yes" name="vid4_q5_satisfied" value="yes" required>
+                        <label for="vid4_q5_yes">Yes</label>
+                        <input type="radio" id="vid4_q5_no" name="vid4_q5_satisfied" value="no" required>
+                        <label for="vid4_q5_no">No</label><br>
+                        <div id="changeAnswers" style="display: none;">
+                            <p>Select the question you want to change:</p>
+                            <select id="questionToChange">
+                                <option value="1">Question 1</option>
+                                <option value="2">Question 2</option>
+                                <option value="3">Question 3</option>
+                                <option value="4">Question 4</option>
+                                <option value="5">Question 5</option>
+                            </select>
+                            <button type="button" onclick="changeAnswer(videoNumber)">Change Answer</button>
+                        </div>
+                        <button type="button" onclick="submitForm(videoNumber)">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="answerBox">
+            <h3>Your Answers:</h3>
+            <div id="answerContent"></div>
+        </div>
+    </div>
     
-      <script>
-      document.getElementById('vid_QT').addEventListener('submit', function(e) {
-        e.preventDefault();
+    <button id="Continue" class="button continue" style="display: none;">Continue</button>
+    <button id="end" class="button end" style="display: none;">End Study</button>
+
+    <!-- Include your shared JavaScript file -->
+    <!-- <script src="shared.js"></script> -->
     
-        let questions = ['vid4_q1', 'vid4_q2', 'vid4_q3', 'vid4_q4', 'vid4_q5'];
-        let isValid = true;
-      
-        for (let i = 0; i < questions.length; i++) {
-          let question = document.getElementById(questions[i]);
-          if (question.value.trim() === '') {
-            isValid = false;
-            alert('Please answer all questions.');
-            break;
-          }
-          // Save the answer to localStorage
-          localStorage.setItem(questions[i], question.value);
-        }
-      
-        if (isValid) {
-          // Display the buttons
-          document.getElementById('Continue').style.display = 'block';
-          document.getElementById('end').style.display = 'block';
-        }
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        setPageTitle(videoNumber);
+        setupEventListeners(videoNumber);
+        updateAnswerBox(videoNumber);
       });
-      
-      document.getElementById('Continue').addEventListener('click', function() {
-        window.location.href = 'video5.html';
-      });
-      
-      document.getElementById('end').addEventListener('click', function() {
-        window.location.href = 'end.html';
-      });
-      </script>
+    </script>
+    
       
     </body>
 </html>
