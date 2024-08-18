@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+    <script src="config.js"></script>
+    <title></title>
+</head>
+<body>
+    <h1></h1>
+    <div class="container">
+        <div class="video-questionnaire">
+            <div class="center">    
+                <div id="singleVideoContainer">
+                    <video id="currentVideo" width="640" height="480" controls>
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+                <div id="sideBySideContainer" style="display: none;">
+                    <div class="video-wrapper">
+                        <video id="leftVideo" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-wrapper">
+                        <video id="rightVideo" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="questionnaire" style="display: none;">
+                <form id="vid_QT">
+                    <div id="question1" class="question">
+                        <label for="vid_q1"></label><br>
+                        <input type="text" id="vid_q1" name="vid_q1" required><br>
+                        <button type="button">Next</button>
+                    </div>
+                    
+                    <div id="question2" class="question" style="display: none;">
+                        <label for="vid_q2"></label><br>
+                        <input type="text" id="vid_q2" name="vid_q2" required><br>
+                        <button type="button">Next</button>
+                    </div>
+                    
+                    <div id="question3" class="question" style="display: none;">
+                        <label for="vid_q3"></label><br>
+                        <input type="text" id="vid_q3" name="vid_q3" required><br>
+                        <button type="button">Next</button>
+                    </div>
+                    
+                    <div id="question4" class="question" style="display: none;">
+                        <label for="vid_q4"></label><br>
+                        <div id="q4Options"></div>
+                        <input type="checkbox" id="vid_q4_other" name="vid_q4" value="other">
+                        <label for="vid_q4_other">Add other element not listed</label><br>
+                        <input type="text" id="vid_q4_other_text" style="display: none;" placeholder="Please specify">
+                        <button type="button">Next</button>
+                    </div>
+
+                    <div id="question5" class="question" style="display: none;">
+                        <label>Are you satisfied with all your answers?</label><br>
+                        <input type="radio" id="vid_q5_yes" name="vid_q5_satisfied" value="yes" required>
+                        <label for="vid_q5_yes">Yes</label>
+                        <input type="radio" id="vid_q5_no" name="vid_q5_satisfied" value="no" required>
+                        <label for="vid_q5_no">No</label><br>
+                        <div id="changeAnswers" style="display: none;">
+                            <p>Select the question you want to change:</p>
+                            <select id="questionToChange">
+                                <option value="1">Question 1</option>
+                                <option value="2">Question 2</option>
+                                <option value="3">Question 3</option>
+                                <option value="4">Question 4</option>
+                            </select>
+                            <button type="button" id="changeAnswerBtn">Change Answer</button>
+                        </div>
+                        <button type="button" id="submitQ5">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="answerBox">
+            <h3>Your Answers for: Video <span id="currentVideoNumber"></span></h3>
+            <div id="answerContent"></div>
+        </div>
+    </div>
+    
+    <button id="Continue" class="button continue" style="display: none;">Continue</button>
+    <button id="end" class="button end" style="display: none;">End Study</button>
+
+    <script src="videoPlayer.js"></script>
+</body>
+</html>
