@@ -159,9 +159,9 @@ h1 {
 
 .button.continue {
     background-color: var(--secondary-color);
-    position: fixed;
-    bottom: 20px;
-    right: 10px;
+    position: relative;
+    /* bottom: 20px; */
+    left: 300px;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -177,9 +177,10 @@ h1 {
 
 .button.end {
     background-color: var(--error-color);
-    position: fixed;
-    bottom: 20px;
-    left: 10px;
+    position: relative;
+    /* bottom: 20px; */
+    right: 300px;
+
     color: white;
     padding: 10px 20px;
     border: none;
@@ -312,4 +313,57 @@ h1 {
 
 #questionToChange {
     margin-right: 10px;
+}
+
+/* Add these new styles */
+.side-by-side-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+.side-by-side-layout #sideBySideContainer {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.side-by-side-layout #questionnaire,
+.side-by-side-layout #answerBox {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+}
+
+/* Adjust the existing media query */
+@media (max-width: 1024px) {
+    .side-by-side-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .side-by-side-layout #sideBySideContainer {
+        grid-column: 1;
+        grid-row: 1;
+        flex-direction: row;
+    }
+
+    .side-by-side-layout #questionnaire
+    {
+        grid-column: 1;
+        grid-row: 1;
+        width: auto;
+        height: auto;
+        max-height: 300px;
+    }
+    .side-by-side-layout #answerBox {
+        grid-column: 2;
+        grid-row: 1;
+        width: auto;
+        height: 100px;
+        max-height: auto;
+    }
 }

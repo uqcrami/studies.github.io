@@ -23,7 +23,7 @@
         <p>The objective of this study is to investigate how basic agents can evoke emotional responses from human observers. We aim to employ a novel analytical approach to examine the results, with the goal of identifying key expressive characteristics. This analysis will contribute to refining our understanding of expressivity in artificial agents. Additionally, we seek to determine how expressivity is manifested within the constraints of limited agent capabilities.</p>
         
         <h2>Study Procedures</h2>
-        <p>If you agree to participate, you will be asked to watch five videos, lasting no longer than 30 seconds each, then describe what you see, and respond to a number of questions such as "What in the forms actions mostly resulted in your behaviour prediction?". Your participation will be paid at a rate of 9GBP and should not extend past 20 minutes.</p>
+        <p>If you agree to participate, you will be asked to watch fifteen videos, lasting no longer than 30 seconds each, then describe what you see, and respond to a number of questions such as "What in the forms actions mostly resulted in your behaviour prediction?". Your participation will be paid at a rate of 9GBP and should not extend past 20 minutes.</p>
         
         <h2>Voluntary Participation</h2>
         <p>Your participation in this study is ENTIRELY VOLUNTARY. You have the right to withdraw from the study at any time without providing any reason. Remuneration will be paid only for completed studies.</p>
@@ -59,8 +59,11 @@
         const continueBtn = document.getElementById('continueBtn');
         let agreementTimestamp;
 
+
+
         consentText.addEventListener('scroll', function() {
-            if (consentText.scrollHeight - consentText.scrollTop === consentText.clientHeight) {
+            if ((consentText.scrollHeight - consentText.scrollTop <= consentText.clientHeight + 50) || 
+                (consentText.scrollHeight - consentText.scrollTop === consentText.clientHeight)) {
                 agreement.style.display = 'block';
             }
         });

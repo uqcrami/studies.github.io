@@ -14,11 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function loadVideo() {
         const currentVideoConfig = studyConfig.videoSequence[currentVideoIndex];
+        console.log(`Loading video file: ${currentVideoConfig.src}`);
         if (currentVideoConfig.type === "sideBySide") {
             document.getElementById('singleVideoContainer').style.display = 'none';
             document.getElementById('sideBySideContainer').style.display = 'flex';
             document.getElementById('leftVideo').src = currentVideoConfig.src[0];
             document.getElementById('rightVideo').src = currentVideoConfig.src[1];
+            
+            // Apply the new layout
+            document.querySelector('.container').classList.add('side-by-side-layout');
             
             // Add ended event listeners to both videos
             const leftVideo = document.getElementById('leftVideo');
@@ -30,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('singleVideoContainer').style.display = 'block';
             document.getElementById('sideBySideContainer').style.display = 'none';
             videoPlayer.src = currentVideoConfig.src;
+            
+            // Remove the side-by-side layout class if it was previously added
+            document.querySelector('.container').classList.remove('side-by-side-layout');
         }
         document.getElementById('currentVideoNumber').textContent = currentVideoIndex + 1;
         questionnaire.style.display = 'none';
@@ -259,6 +266,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function loadNextVideo() {
         currentVideoIndex++;
+        if (currentVideoIndex > studyConfig.videoSequence.length) {
+            endStudy();
+        }
         currentQuestionIndex = 0; // Reset the question index for the new video
         resetUI();
         clearAnswers();
@@ -316,6 +326,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
+        setTimeout(() => {
+            window.location.href = 'end.html';
+        }, 1000); // 1 second delay
+
     }
 
     // Start the study

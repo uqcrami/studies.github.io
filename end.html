@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <title>End of Study</title>
-  <body>
-    <h2>End of Study</h2>
-    <p>Thank you for your participation.</p>
-    <p>Click the button below to submit your responses.</p>
-    <button onclick="window.location.href='index.html'">restart</button>
-
-    <button onclick="generateCSV()">Submit</button>
-
-    <script>
-      function generateCSV() {
-        let csvContent = 'data:text/csv;charset=utf-8,';
-        let answer1 = localStorage.getItem('question1');
-        // Add more lines as needed to retrieve the answers to other questions
-        csvContent += answer1 + '\r\n';
-        // Add more lines as needed to add the answers to other questions to the CSV file
-        var encodedUri = encodeURI(csvContent);
-        var link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "answers.csv");
-        document.body.appendChild(link); // Required for FF
-        link.click(); // This will download the data file named "answers.csv".
-        localStorage.clear(); // Clear localStorage
-      }
-
-    </script>
-
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End of Study</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #3498db;
+            background-color: #f5f7fa;
+        }
+        .centered-content {
+            text-align: center;
+        }
+        .centered-content h1 {
+            font-size: 3em; /* Large font size for the main heading */
+        }
+        .centered-content h3 {
+            font-size: 2em; /* Large font size for the subheading */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-content">
+        <h1>You have reached the end of our study</h1>
+        <h3>Thank you for your participation.</h3>
+    </div>
+</body>
 </html>
