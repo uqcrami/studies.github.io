@@ -24,9 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Apply the new layout
             document.querySelector('.container').classList.add('side-by-side-layout');
             
-            // Add ended event listeners to both videos
+            // Remove previous event listeners before adding new ones
             const leftVideo = document.getElementById('leftVideo');
             const rightVideo = document.getElementById('rightVideo');
+            
+            leftVideo.removeEventListener('ended', checkBothVideosEnded);
+            rightVideo.removeEventListener('ended', checkBothVideosEnded);
             
             leftVideo.addEventListener('ended', checkBothVideosEnded);
             rightVideo.addEventListener('ended', checkBothVideosEnded);
@@ -37,22 +40,29 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Remove the side-by-side layout class if it was previously added
             document.querySelector('.container').classList.remove('side-by-side-layout');
+            
+            // Remove previous event listener before adding a new one
+            videoPlayer.removeEventListener('ended', showQuestionnaire);
+            videoPlayer.addEventListener('ended', showQuestionnaireOnce);
         }
         document.getElementById('currentVideoNumber').textContent = currentVideoIndex + 1;
         questionnaire.style.display = 'none';
+    }
+
+    // New function to ensure questionnaire is shown only once
+    function showQuestionnaireOnce() {
+        if (currentQuestionIndex === 0) {
+            showQuestionnaire();
+        }
     }
 
     function checkBothVideosEnded() {
         const leftVideo = document.getElementById('leftVideo');
         const rightVideo = document.getElementById('rightVideo');
         
-        if (leftVideo.ended && rightVideo.ended) {
+        if (leftVideo.ended && rightVideo.ended && currentQuestionIndex === 0) {
             showQuestionnaire();
         }
-    }
-
-    if (studyConfig.videoSequence[currentVideoIndex].type !== "sideBySide") {
-        videoPlayer.addEventListener('ended', showQuestionnaire);
     }
 
     function showQuestionnaire() {
@@ -263,6 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     continueButton.addEventListener('click', loadNextVideo);
     endButton.addEventListener('click', endStudy);
+    endButton.style.display = 'block';
 
     function loadNextVideo() {
         currentVideoIndex++;
@@ -281,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         questionnaire.style.display = 'none';
         answerBox.style.display = 'none';
         continueButton.style.display = 'none';
-        endButton.style.display = 'none';
+        endButton.style.display = 'block';
         clearInputFields();
         removeBackToQuestion5Buttons();
     }

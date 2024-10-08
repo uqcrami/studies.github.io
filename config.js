@@ -105,20 +105,20 @@ const studyConfig = {
       ],
       questions: [
         "Are the videos the same or different?",
-        "if they are different, please describe the differences, otherwise please describe the similarities.",
-        "From Q2, Which specific expressions or actions had the greatest influence on your response?",
-        "What is the single element that would need to be changed to make the videos different from each other?",
-        "Are you satisfied with all your answers?"
+        "From Q1, Which specific expressions or actions from each shape influenced your response, please add or select as many as necessary?",
+        "Please rate your impression of each shape on these scales",
+        "Please rate your impression of each shape on these scales",
+        "Please rate your impression of each shape on these scales?"
       ]
     }
   ],
   questionOptions: {
-    q4: [
+    q2: [
       "Velocity of movements",
-      "Proximity between actors",
-      "Actor's colour",
-      "Actor's size",
-      "Actor's shape",
+      "Proximity to others",
+      "Colour",
+      "Size",
+      "Shape",
       "Add other element not listed"
     ]
   },
