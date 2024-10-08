@@ -113,7 +113,7 @@ const studyConfig = {
     }
   ],
   questionOptions: {
-    q2: [
+    q4: [
       "Velocity of movements",
       "Proximity to others",
       "Colour",
