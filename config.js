@@ -2,39 +2,39 @@
 // bt_st_c-shapeColoured_colour_angle_fRate_scene
 const videoFilenames = [
   {
-    root_video: "/resources/videos/scenes/TCC-allBlacks-blue_30_3_p1.mp4",
+    root_video: "resources/videos/scenes/TCC-allBlacks-blue_30_3_p1.mp4",
     derivatives: [
-      "/resources/videos/scenes/TCC-btriangle-blue_30_3_p1.mp4",
-      "/resources/videos/scenes/TCC-striangle-blue_30_3_p1.mp4",
-      "/resources/videos/scenes/TCC-circle-blue_30_3_p1.mp4",
-      "/resources/videos/scenes/TCC-rectangle-blue_30_3_p1.mp4"
+      "resources/videos/scenes/TCC-btriangle-blue_30_3_p1.mp4",
+      "resources/videos/scenes/TCC-striangle-blue_30_3_p1.mp4",
+      "resources/videos/scenes/TCC-circle-blue_30_3_p1.mp4",
+      "resources/videos/scenes/TCC-rectangle-blue_30_3_p1.mp4"
     ]
   },
   {
-    root_video: "/resources/videos/scenes/TCC-allBlacks-blue_1_3_p1.mp4",
+    root_video: "resources/videos/scenes/TCC-allBlacks-blue_1_3_p1.mp4",
     derivatives: [
-      "/resources/videos/scenes/TCC-btriangle-blue_1_3_p1.mp4",
-      "/resources/videos/scenes/TCC-striangle-blue_1_3_p1.mp4",
-      "/resources/videos/scenes/TCC-circle-blue_1_3_p1.mp4",
-      "/resources/videos/scenes/TCC-rectangle-blue_1_3_p1.mp4"
+      "resources/videos/scenes/TCC-btriangle-blue_1_3_p1.mp4",
+      "resources/videos/scenes/TCC-striangle-blue_1_3_p1.mp4",
+      "resources/videos/scenes/TCC-circle-blue_1_3_p1.mp4",
+      "resources/videos/scenes/TCC-rectangle-blue_1_3_p1.mp4"
     ]
   },
   {
-    root_video: "/resources/videos/scenes/TCC-allBlacks-blue_30_3_p3.mp4",
+    root_video: "resources/videos/scenes/TCC-allBlacks-blue_30_3_p3.mp4",
     derivatives: [
-      "/resources/videos/scenes/TCC-btriangle-blue_30_3_p3.mp4",
-      "/resources/videos/scenes/TCC-striangle-blue_30_3_p3.mp4",
-      "/resources/videos/scenes/TCC-circle-blue_30_3_p3.mp4",
-      "/resources/videos/scenes/TCC-rectangle-blue_30_3_p3.mp4"
+      "resources/videos/scenes/TCC-btriangle-blue_30_3_p3.mp4",
+      "resources/videos/scenes/TCC-striangle-blue_30_3_p3.mp4",
+      "resources/videos/scenes/TCC-circle-blue_30_3_p3.mp4",
+      "resources/videos/scenes/TCC-rectangle-blue_30_3_p3.mp4"
     ]
   },
   {
-    root_video: "/resources/videos/scenes/TCC-allBlacks-blue_1_3_p3.mp4",
+    root_video: "resources/videos/scenes/TCC-allBlacks-blue_1_3_p3.mp4",
     derivatives: [
-      "/resources/videos/scenes/TCC-btriangle-blue_1_3_p3.mp4",
-      "/resources/videos/scenes/TCC-striangle-blue_1_3_p3.mp4",
-      "/resources/videos/scenes/TCC-circle-blue_1_3_p3.mp4",
-      "/resources/videos/scenes/TCC-rectangle-blue_1_3_p3.mp4"
+      "resources/videos/scenes/TCC-btriangle-blue_1_3_p3.mp4",
+      "resources/videos/scenes/TCC-striangle-blue_1_3_p3.mp4",
+      "resources/videos/scenes/TCC-circle-blue_1_3_p3.mp4",
+      "resources/videos/scenes/TCC-rectangle-blue_1_3_p3.mp4"
     ]
   }
 ];
