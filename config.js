@@ -65,24 +65,24 @@ function createGodspeedQuestion(text, dimension) {
 const godspeedDimensions = {
   "Anthropomorphism": [
     "Fake vs. Natural",
-  //   "Machinelike vs. Humanlike",
-  //   "Unconscious vs. Conscious",
-  //   "Artificial vs. Lifelike",
-  //   "Moving rigidly vs. Moving elegantly"
-  // ],
-  // "Animacy": [
-  //   "Dead vs. Alive",
-  //   "Stagnant vs. Lively",
-  //   "Mechanical vs. Organic",
-  //   "Artificial vs. Lifelike",
-  //   "Inert vs. Interactive",
-  //   "Apathetic vs. Responsive"
-  // ],
-  // "Likeability": [
-  //   "Dislike vs. Like",
-  //   "Unfriendly vs. Friendly",
-  //   "Unkind vs. Kind",
-  //   "Unpleasant vs. Pleasant",
+    "Machinelike vs. Humanlike",
+    "Unconscious vs. Conscious",
+    "Artificial vs. Lifelike",
+    "Moving rigidly vs. Moving elegantly"
+  ],
+  "Animacy": [
+    "Dead vs. Alive",
+    "Stagnant vs. Lively",
+    "Mechanical vs. Organic",
+    "Artificial vs. Lifelike",
+    "Inert vs. Interactive",
+    "Apathetic vs. Responsive"
+  ],
+  "Likeability": [
+    "Dislike vs. Like",
+    "Unfriendly vs. Friendly",
+    "Unkind vs. Kind",
+    "Unpleasant vs. Pleasant",
     "Awful vs. Nice"
   ]
 };
@@ -103,7 +103,7 @@ const mainQuestionnaire = [
     type: "text"
   },
   {
-    text: "From Q1, Which specific expressions or actions of the blue shape influenced your response? please select or add as many options as necessary using the 'other' option.",
+    text: "From the description you provided in Q1, Which specific expressions or actions of the blue shape influenced your response? please select or add as many options as necessary using the 'other' option.",
     type: "multiple_selection",
     options: dofex_question_options
   },
@@ -155,7 +155,7 @@ const studyConfig = {
     {
       id: "video3",
       type: "single",
-      src: videoFilenames[0].root_video,
+      src: videoFilenames[2].root_video,
       // shapes will be parsed in VideoPlayer.js
       
       questions: mainQuestionnaire
@@ -163,15 +163,15 @@ const studyConfig = {
     {
       id: "video4",
       type: "single",
-      src: videoFilenames[1].root_video,
+      src: videoFilenames[3].root_video,
       questions: mainQuestionnaire
     },
     {
       id: "video3and4",
       type: "sideBySide",
       src: [
-        videoFilenames[0].root_video,
-        videoFilenames[1].root_video
+        videoFilenames[2].root_video,
+        videoFilenames[3].root_video
       ],
       questions: shortQuestionnaire
     }
