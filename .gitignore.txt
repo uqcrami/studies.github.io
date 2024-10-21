@@ -3,3 +3,4 @@
 \vidTester.js
 \resources\videos\scenes\vids.txt
 \config_backup_20240816.js
+\resources\videos\scenes\Temp\
