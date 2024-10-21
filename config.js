@@ -65,24 +65,24 @@ function createGodspeedQuestion(text, dimension) {
 const godspeedDimensions = {
   "Anthropomorphism": [
     "Fake vs. Natural",
-  //   "Machinelike vs. Humanlike",
-  //   "Unconscious vs. Conscious",
-  //   "Artificial vs. Lifelike",
-  //   "Moving rigidly vs. Moving elegantly"
-  // ],
-  // "Animacy": [
-  //   "Dead vs. Alive",
-  //   "Stagnant vs. Lively",
-  //   "Mechanical vs. Organic",
-  //   "Artificial vs. Lifelike",
-  //   "Inert vs. Interactive",
-  //   "Apathetic vs. Responsive"
-  // ],
-  // "Likeability": [
-  //   "Dislike vs. Like",
-  //   "Unfriendly vs. Friendly",
-  //   "Unkind vs. Kind",
-  //   "Unpleasant vs. Pleasant",
+    "Machinelike vs. Humanlike",
+    "Unconscious vs. Conscious",
+    "Artificial vs. Lifelike",
+    "Moving rigidly vs. Moving elegantly"
+  ],
+  "Animacy": [
+    "Dead vs. Alive",
+    "Stagnant vs. Lively",
+    "Mechanical vs. Organic",
+    "Artificial vs. Lifelike",
+    "Inert vs. Interactive",
+    "Apathetic vs. Responsive"
+  ],
+  "Likeability": [
+    "Dislike vs. Like",
+    "Unfriendly vs. Friendly",
+    "Unkind vs. Kind",
+    "Unpleasant vs. Pleasant",
     "Awful vs. Nice"
   ]
 };
