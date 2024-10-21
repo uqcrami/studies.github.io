@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="pageTitle"></title>
+    <link rel="stylesheet" type="text/css" href="studyStyle.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- Display the study title -->
+    <h1 id="studyTitle"></h1>
+
+    <!-- Container for the video player(s) and side image -->
+    <div id="videoAndImageContainer" class="video-image-container center">
+        <!-- Video Player -->
+        <div id="videoContainer" class="video-container"></div>
+
+        <!-- Shape Image
+        <div id="shapeImageContainer" class="image-container">
+            <img id="shapeImage" src="./resources/images/imageTest_1.png" alt="Shape to focus on">
+        </div> -->
+    </div>
+
+    <!-- Container for the instructions below the video -->
+    <div id="instructionContainer" class="instruction-container">
+        <div id="shapeInstruction" class="shape-instruction">
+            <img id="triangleImage" alt="Triangle shape">
+            <p>Answer according to this shape</p>
+        </div>
+    </div> 
+    <!-- <div id ='multipleSelectionContatiner' class = 'multiple-selection-container'>
+        <p>DoFEx questions</p>
+    </div>  -->
+
+    <!-- Container for the questionnaire -->
+    <div id="questionnaireContainer" style="display: none;"></div>
+
+    <!-- Include the VideoPlayer script -->
+    <script src="videoPlayer.js"></script>
+</body>
+</html>

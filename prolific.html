@@ -22,10 +22,11 @@
             <input type="submit" class="form input" value="Submit">
         </form>
     </div>
-
+    <div class="center">    
     <button id="Continue" class="button continue" style="display: none;">Continue</button>
     <button id="end" class="button end" style="display: none;">End Study</button>
-
+    </div>
+    </body>
     <script>
         document.getElementById('participant_QT').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -40,6 +41,12 @@
                     alert('Please answer all questions.');
                     break;
                 }
+                if (questions[i] == 'notRobot' && question.value != 2) {
+                    isValid = false;
+                    alert('You are not a robot. Please answer the question correctly.');
+                    break;
+            
+                }
                 // Save the answer to localStorage
                 localStorage.setItem(questions[i], question.value);
             }
@@ -52,7 +59,7 @@
         });
 
         document.getElementById('Continue').addEventListener('click', function() {
-            window.location.href = 'video1.html';
+            window.location.href = 'videoPlayer.html';
         });
 
         document.getElementById('end').addEventListener('click', function() {
