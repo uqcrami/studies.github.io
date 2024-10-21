@@ -64,7 +64,7 @@ function createGodspeedQuestion(text, dimension) {
 // Define the Godspeed Questionnaire dimensions and their questions
 const godspeedDimensions = {
   "Anthropomorphism": [
-  //   "Fake vs. Natural",
+    "Fake vs. Natural",
   //   "Machinelike vs. Humanlike",
   //   "Unconscious vs. Conscious",
   //   "Artificial vs. Lifelike",
