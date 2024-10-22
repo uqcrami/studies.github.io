@@ -130,50 +130,50 @@ const studyConfig = {
   endPage: "end.html",
   videoSequence: [
     {
-    //   id: "video1",
-    //   type: "single",
-    //   src: videoFilenames[0].root_video,
-    //   // shapes will be parsed in VideoPlayer.js
-      
-    //   questions: mainQuestionnaire
-    // },
-    // {
-    //   id: "video2",
-    //   type: "single",
-    //   src: videoFilenames[1].root_video,
-    //   questions: mainQuestionnaire
-    // },
-    // {
-    //   id: "video1and2",
-    //   type: "sideBySide",
-    //   src: [
-    //     videoFilenames[0].root_video,
-    //     videoFilenames[1].root_video
-    //   ],
-    //   questions: shortQuestionnaire
-    // },
-    // {
-      id: "video3",
+      id: "video1",
       type: "single",
-      src: videoFilenames[2].root_video,
+      src: videoFilenames[0].root_video,
       // shapes will be parsed in VideoPlayer.js
       
       questions: mainQuestionnaire
     },
     {
-      id: "video4",
+      id: "video2",
       type: "single",
-      src: videoFilenames[3].root_video,
+      src: videoFilenames[1].root_video,
       questions: mainQuestionnaire
     },
     {
-      id: "video3and4",
+      id: "video1and2",
       type: "sideBySide",
       src: [
-        videoFilenames[2].root_video,
-        videoFilenames[3].root_video
+        videoFilenames[0].root_video,
+        videoFilenames[1].root_video
       ],
       questions: shortQuestionnaire
+    // },
+    // {
+    //   id: "video3",
+    //   type: "single",
+    //   src: videoFilenames[2].root_video,
+    //   // shapes will be parsed in VideoPlayer.js
+      
+    //   questions: mainQuestionnaire
+    // },
+    // {
+    //   id: "video4",
+    //   type: "single",
+    //   src: videoFilenames[3].root_video,
+    //   questions: mainQuestionnaire
+    // },
+    // {
+    //   id: "video3and4",
+    //   type: "sideBySide",
+    //   src: [
+    //     videoFilenames[2].root_video,
+    //     videoFilenames[3].root_video
+    //   ],
+    //   questions: shortQuestionnaire
     }
   ]
 };
