@@ -65,24 +65,24 @@ function createGodspeedQuestion(text, dimension) {
 const godspeedDimensions = {
   "Anthropomorphism": [
     "Fake vs. Natural",
-  //   "Machinelike vs. Humanlike",
-  //   "Unconscious vs. Conscious",
-  //   "Artificial vs. Lifelike",
-  //   "Moving rigidly vs. Moving elegantly"
-  // ],
-  // "Animacy": [
-  //   "Dead vs. Alive",
-  //   "Stagnant vs. Lively",
-  //   "Mechanical vs. Organic",
-  //   "Artificial vs. Lifelike",
-  //   "Inert vs. Interactive",
-  //   "Apathetic vs. Responsive"
-  // ],
-  // "Likeability": [
-  //   "Dislike vs. Like",
-  //   "Unfriendly vs. Friendly",
-  //   "Unkind vs. Kind",
-  //   "Unpleasant vs. Pleasant",
+    "Machinelike vs. Humanlike",
+    "Unconscious vs. Conscious",
+    "Artificial vs. Lifelike",
+    "Moving rigidly vs. Moving elegantly"
+  ],
+  "Animacy": [
+    "Dead vs. Alive",
+    "Stagnant vs. Lively",
+    "Mechanical vs. Organic",
+    "Artificial vs. Lifelike",
+    "Inert vs. Interactive",
+    "Apathetic vs. Responsive"
+  ],
+  "Likeability": [
+    "Dislike vs. Like",
+    "Unfriendly vs. Friendly",
+    "Unkind vs. Kind",
+    "Unpleasant vs. Pleasant",
     "Awful vs. Nice"
   ]
 };
@@ -130,29 +130,29 @@ const studyConfig = {
   endPage: "end.html",
   videoSequence: [
     {
-      id: "video1",
-      type: "single",
-      src: videoFilenames[0].root_video,
-      // shapes will be parsed in VideoPlayer.js
+    //   id: "video1",
+    //   type: "single",
+    //   src: videoFilenames[0].root_video,
+    //   // shapes will be parsed in VideoPlayer.js
       
-      questions: mainQuestionnaire
-    },
-    {
-      id: "video2",
-      type: "single",
-      src: videoFilenames[1].root_video,
-      questions: mainQuestionnaire
-    },
-    {
-      id: "video1and2",
-      type: "sideBySide",
-      src: [
-        videoFilenames[0].root_video,
-        videoFilenames[1].root_video
-      ],
-      questions: shortQuestionnaire
-    },
-    {
+    //   questions: mainQuestionnaire
+    // },
+    // {
+    //   id: "video2",
+    //   type: "single",
+    //   src: videoFilenames[1].root_video,
+    //   questions: mainQuestionnaire
+    // },
+    // {
+    //   id: "video1and2",
+    //   type: "sideBySide",
+    //   src: [
+    //     videoFilenames[0].root_video,
+    //     videoFilenames[1].root_video
+    //   ],
+    //   questions: shortQuestionnaire
+    // },
+    // {
       id: "video3",
       type: "single",
       src: videoFilenames[2].root_video,
